@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4f46e5", /* Indigo */
+                        secondary: "#1e293b", /* Dark Blue-Gray */
+                        accent: "#9333ea", /* Purple */
+                        dark: "#0f172a", /* Very Dark Blue */
+                    },
+                    animation: {
+                        fadeIn: "fadeIn 1.5s ease-in-out",
+                        slideIn: "slideIn 0.8s ease-out",
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            "0%": { opacity: "0" },
+                            "100%": { opacity: "1" }
+                        },
+                        slideIn: {
+                            "0%": { transform: "translateX(-100%)", opacity: "0" },
+                            "100%": { transform: "translateX(0)", opacity: "1" }
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-dark text-white flex">
+
+
+    <div class="bg-secondary w-64 min-h-screen p-6 hidden md:block animate-slideIn">
+        <h2 class="text-xl font-bold mb-6 text-white">Dashboard</h2>
+        <ul class="space-y-4">
+            <li><a href="index.html" class="block py-2 px-4 rounded bg-primary hover:bg-indigo-700">Dashboard</a></li>
+            <li><a href="users.html" class="block py-2 px-4 rounded hover:bg-gray-700">Users</a></li>
+            <li><a href="analytics.html" class="block py-2 px-4 rounded hover:bg-gray-700">Analytics</a></li>
+            <li><a href="settings.html" class="block py-2 px-4 rounded hover:bg-gray-700">Settings</a></li>
+            <li><a href="profile.html" class="block py-2 px-4 rounded hover:bg-gray-700">Profile</a></li>
+        </ul>
+    </div>
+
+    <button id="menu-btn" class="md:hidden p-4 bg-primary text-white fixed top-4 left-4 rounded">
+        ☰
+    </button>
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-secondary p-6 w-2/3 min-h-screen">
+        <button id="close-menu" class="absolute top-4 right-4 text-white">✖</button>
+        <ul class="space-y-4 mt-10">
+            <li><a href="index.html" class="block py-2 px-4 rounded bg-primary hover:bg-indigo-700">Dashboard</a></li>
+            <li><a href="users.html" class="block py-2 px-4 rounded hover:bg-gray-700">Users</a></li>
+            <li><a href="analytics.html" class="block py-2 px-4 rounded hover:bg-gray-700">Analytics</a></li>
+            <li><a href="settings.html" class="block py-2 px-4 rounded hover:bg-gray-700">Settings</a></li>
+            <li><a href="profile.html" class="block py-2 px-4 rounded hover:bg-gray-700">Profile</a></li>
+        </ul>
+    </div>
+
+    <div class="flex-1 p-6">
+        <h1 class="text-3xl font-bold">Dashboard Overview</h1>
+        <p class="text-gray-400 mt-2">Welcome to your admin dashboard.</p>
+
+        <div class="grid md:grid-cols-3 gap-6 mt-6">
+            <div class="bg-secondary p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+                <h3 class="text-xl font-bold">Total Users</h3>
+                <p class="text-3xl mt-2">1,245</p>
+            </div>
+            <div class="bg-secondary p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+                <h3 class="text-xl font-bold">Sales</h3>
+                <p class="text-3xl mt-2">$12,345</p>
+            </div>
+            <div class="bg-secondary p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+                <h3 class="text-xl font-bold">Active Sessions</h3>
+                <p class="text-3xl mt-2">345</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("menu-btn").addEventListener("click", function () {
+            document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+        document.getElementById("close-menu").addEventListener("click", function () {
+            document.getElementById("mobile-menu").classList.add("hidden");
+        });
+    </script>
+
+</body>
+</html>
